@@ -13,11 +13,18 @@ LUA_VERSION_NUM= 500
 LIBNAME= $T.so.$V
 COMPAT_DIR= ../compat/src
 
-OPENSSL_LIBS= -L/usr/local/openssl/lib -lcrypto -lssl
-OPENSSL_INCS= -I/usr/local/openssl/include
+##########
+# LuaCrypto engine (openssl or gcrypt - not used yet)
+#LUACRYPTO_ENGINE= gcrypt
+### OpenSSL
+LUACRYPTO_LIBS= -L/usr/local/openssl/lib -lcrypto -lssl
+LUACRYPTO_INCS= -I/usr/local/openssl/include -DCRYPTO_OPENSSL=1
+### gcrypt
+#LUACRYPTO_LIBS= $(shell libgcrypt-config --libs) 
+#LUACRYPTO_INCS= $(shell libgcrypt-config --cflags) -DCRYPTO_GCRYPT=1
 
 # Compilation directives
 WARN= -O2 -Wall -fPIC -W -Waggregate-return -Wcast-align -Wmissing-prototypes -Wnested-externs -Wshadow -Wwrite-strings
 INCS= -I$(LUA_INC) -I$(COMPAT_DIR)
-CFLAGS= $(WARN) $(OPENSSL_INCS) $(INCS)
+CFLAGS= $(WARN) $(LUACRYPTO_INCS) $(INCS)
 CC= gcc

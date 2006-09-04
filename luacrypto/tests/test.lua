@@ -1,7 +1,7 @@
 #!/usr/local/bin/lua50
 
 --[[
--- $Id: test.lua,v 1.3 2006-08-25 03:24:17 nezroy Exp $
+-- $Id: test.lua,v 1.4 2006-09-04 20:32:57 nezroy Exp $
 -- See Copyright Notice in license.html
 --]]
 
@@ -14,6 +14,7 @@ sha1_KNOWN = "d6ed6e26ebeb37ba0792ec75a3d0b4dcec279d25"
 hmac_KNOWN = "70a7ea81a287d094c534cdd67be82e85066e13be"
 
 print("LuaCrypto version: " .. crypto._VERSION)
+print("LuaCrypto engine: " .. crypto._ENGINE)
 print("")
 
 function report(w, s, F, t)
