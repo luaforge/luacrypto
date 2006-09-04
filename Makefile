@@ -1,5 +1,5 @@
 T= lcrypto
-V= 0.2.0
+V= 0.3.0
 CONFIG= ./config
 
 include $(CONFIG)
@@ -13,7 +13,7 @@ SRCS= src/$T.h src/$T.c
 lib: src/$(LIBNAME)
 
 src/$(LIBNAME): $(OBJS)
-	export MACOSX_DEPLOYMENT_TARGET="10.3"; $(CC) $(CFLAGS) $(LIB_OPTION) -o src/$(LIBNAME) $(OBJS) $(OPENSSL_LIBS)
+	export MACOSX_DEPLOYMENT_TARGET="10.3"; $(CC) $(CFLAGS) $(LIB_OPTION) -o src/$(LIBNAME) $(OBJS) $(LUACRYPTO_LIBS)
 
 $(COMPAT_DIR)/compat-5.1.o: $(COMPAT_DIR)/compat-5.1.c
 	$(CC) -c $(CFLAGS) -o $@ $(COMPAT_DIR)/compat-5.1.c
